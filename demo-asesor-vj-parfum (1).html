@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VJ Parfum & Decants — Asesor de fragancias (demo)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #0C0A08;
+    --surface: #17130F;
+    --surface-2: #1F1913;
+    --line: #2A2420;
+    --ink: #EDE6DA;
+    --ink-dim: #B8AD9B;
+    --gold: #B08A4E;
+    --amber: #7A3E1D;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  .wrap{
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+  }
+
+  @media (max-width: 900px){
+    .wrap{ grid-template-columns: 1fr; }
+  }
+
+  .pitch{
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px){
+    .pitch{ border-right: none; border-bottom: 1px solid var(--line); padding: 48px 32px; }
+  }
+
+  .brand{
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin: 0 0 40px;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4.2vw, 52px);
+    line-height: 1.08;
+    margin: 0 0 24px;
+    max-width: 11ch;
+  }
+
+  h1 em{
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .lede{
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 36px;
+  }
+
+  .facts{
+    display: flex;
+    gap: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    max-width: 46ch;
+  }
+
+  .fact strong{
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .fact span{
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+
+  .chat-side{
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .chat-label{
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink-dim);
+    margin-bottom: 16px;
+  }
+
+  .chat-panel{
+    width: 100%;
+    max-width: 420px;
+    height: 640px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6);
+  }
+
+  #n8n-chat-demo{
+    width: 100%;
+    height: 100%;
+  }
+
+  .fallback{
+    padding: 32px;
+    color: var(--ink-dim);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Theming del widget @n8n/chat para que combine con la paleta */
+  :root{
+    --chat--color-primary: #B08A4E;
+    --chat--color-primary-shade-50: #9c7940;
+    --chat--color-primary-shade-100: #886832;
+    --chat--color-secondary: #7A3E1D;
+    --chat--color-white: #EDE6DA;
+    --chat--color-light: #1F1913;
+    --chat--color-light-shade-50: #17130F;
+    --chat--color-light-shade-100: #0C0A08;
+    --chat--color-medium: #2A2420;
+    --chat--color-dark: #0C0A08;
+    --chat--color-disabled: #4d443b;
+    --chat--color-typing: #B8AD9B;
+    --chat--spacing: 1rem;
+    --chat--border-radius: 4px;
+    --chat--message--font-size: 0.95rem;
+    --chat--header-height: auto;
+    --chat--header--padding: 1rem;
+    --chat--header--background: var(--surface-2);
+    --chat--header--color: var(--ink);
+    --chat--heading--font-size: 1.1rem;
+    --chat--window--width: 100%;
+    --chat--window--height: 100%;
+    --chat--message--bot--background: var(--surface);
+    --chat--message--bot--color: var(--ink);
+    --chat--message--user--background: var(--gold);
+    --chat--message--user--color: #17130F;
+    --chat--toggle--background: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="pitch">
+      <p class="brand">VJ Parfum &amp; Decants</p>
+
+      <h1>282 perfumes.<br>Uno solo <em>es el que buscás.</em></h1>
+
+      <p class="lede">
+        Esto es un asesor conversacional conectado al catálogo real de la tienda.
+        Le pregunta al cliente qué le gusta — una familia olfativa, una ocasión, un presupuesto —
+        y arma la recomendación con productos, precios y stock reales, no genéricos.
+      </p>
+
+      <div class="facts">
+        <div class="fact">
+          <strong>24/7</strong>
+          <span>Sin depender de que alguien esté disponible para responder</span>
+        </div>
+        <div class="fact">
+          <strong>100%</strong>
+          <span>Precios y stock tomados del catálogo real, no inventados</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-side">
+      <p class="chat-label">Probalo — está conectado al catálogo real</p>
+      <div class="chat-panel">
+        <div id="n8n-chat-demo">
+          <div class="fallback">
+            Cargando asesor…<br><br>
+            Si no aparece nada acá, revisá que <code>webhookUrl</code> esté bien configurado en este archivo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'https://n8n-axcl.srv1946766.hstgr.cloud/webhook/9c57b596-13aa-46fa-b67b-02b48c75c67b/chat',
+      target: '#n8n-chat-demo',
+      mode: 'fullscreen',
+      showWelcomeScreen: false,
+      initialMessages: [
+        '¡Hola! 🌿 Soy el asesor de perfumes de VJ Parfum & Decants. Contame qué tipo de aroma te gusta (amaderado, fresco, dulce, oriental...) o si buscás algo puntual, y te tiro opciones del catálogo.'
+      ],
+      i18n: {
+        es: {
+          title: 'Asesor de Perfumes',
+          subtitle: '',
+          inputPlaceholder: 'Escribí tu consulta...',
+          getStarted: 'Nueva conversación',
+          footer: '',
+          closeButtonTooltip: 'Cerrar'
+        }
+      },
+      defaultLanguage: 'es'
+    });
+  </script>
+
+</body>
+</html>
